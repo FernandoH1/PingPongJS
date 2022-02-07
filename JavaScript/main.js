@@ -1,7 +1,7 @@
 (function(){
-    self.Board = function(width,heigth){
+    self.Board = function(width,height){
         this.width = width;
-        this.heigth = heigth;
+        this.height = height;
         this.playing = false;
         this.game_over = false;
         this.bars = [];
@@ -18,11 +18,11 @@
 })();
 
 (function(){ //Funcion para la creacion de las barras
-    self.Bar= function(x,y,width,heigth,board){
+    self.Bar= function(x,y,width,height,board){
         this.x = x;
         this.y = y;
         this.width = width;
-        this.height = heigth;
+        this.height = height;
         this.board = board;
         this.board.bars.push(this);
         this.kind = "rectangle";
@@ -42,7 +42,7 @@
     self.BoardView = function(canvas,board){
         this.canvas = canvas;
         this.canvas.width = board.width;
-        this.canvas.heigth = board.heigth;
+        this.canvas.height = board.height;
         this.board = board;
         this.ctx = canvas.getContext("2d");
     }
@@ -70,9 +70,9 @@ function draw(ctx,element){
 window.addEventListener("load",main);
 
 function main(){
-    var board = new Board(800,400);
-    var bar = new Bar(20,20,40,100,board);
-    var bar2 = new Bar(700,20,40,100,board);
+    var board = new Board(1000,600);
+    var bar = new Bar(20,180,40,180,board);
+    var bar2 = new Bar(940,180,40,180,board);
     console.log(board);
     var canvas = document.getElementById('canvas',board);
     var board_view = new BoardView(canvas,board);
