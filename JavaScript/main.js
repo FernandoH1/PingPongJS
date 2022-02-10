@@ -70,7 +70,7 @@
         this.board = board;
         this.board.bars.push(this);
         this.kind = "rectangle";
-        this.speed = 10;
+        this.speed = 25;
     }
 
     self.Bar.prototype = { //Creación del los métodos de las Barras
@@ -142,6 +142,11 @@ function hit(a,b){ //chequea si a colicciona con b(boolean)
         if(a.y <= b.y && a.y + a.height >= b.y + b.height){
             hit = true;
         }
+    }
+    if (b.y <= b.radius ) { //Colisióna en el borde de Arriba
+        b.speed_y = 3;
+    } else if (b.y >= this.board.height - b.radius) { //Colisióna en el borde de Abajo
+        b.speed_y = -3;
     }
     return hit;
 }
